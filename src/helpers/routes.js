@@ -1,22 +1,44 @@
+import React, { useEffect } from "react";
 import About from "pages/About/About.index";
 import Home from "pages/Home/Home.index";
-import { Switch, Route } from "react-router-dom";
+import Login from "pages/Login/Login.index";
+import { Switch, Route, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import * as uiAction from "redux/actions/ui.action";
 
 export const ROUTES = [
-  { path: "/", key: "HOME", exact: true, component: Home },
-  { path: "/about", key: "ABOUT", exact: true, component: About },
+  { path: "/", key: "HOME", exact: true, component: Home, withLayout: true },
+  {
+    path: "/about",
+    key: "ABOUT",
+    exact: true,
+    component: About,
+    withLayout: true,
+  },
+  {
+    path: "/login",
+    key: "LOGIN",
+    exact: true,
+    component: Login,
+    withLayout: false,
+  },
 ];
 
 export function RenderRoutes() {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const currentRoute = ROUTES.find((elm) => elm.path === location.pathname);
+    dispatch(uiAction.changeLayoutStatus(Boolean(currentRoute?.withLayout)));
+  }, [location, dispatch]);
+
   return (
     <Switch>
       {ROUTES.map((elm) => (
-        <Route
-          key={elm.key}
-          path={elm.path}
-          exact={elm.exact}
-          component={(props) => <elm.component {...props} />}
-        />
+        <Route key={elm.key} path={elm.path} exact={elm.exact}>
+          <elm.component />
+        </Route>
       ))}
       <Route component={() => "404 error"} />
     </Switch>

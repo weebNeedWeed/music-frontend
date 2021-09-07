@@ -22,7 +22,9 @@ function DesktopNavPresentation() {
             to={elm.path}
             key={index}
           >
-            <span className={`${classes.navItem}__icon`}>{elm.icon}</span>
+            <span className={`${classes.navItem}__icon`}>
+              <elm.icon />
+            </span>
             <span className={`${classes.navItem}__text`}>{elm.name}</span>
           </Link>
         ))}

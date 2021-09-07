@@ -14,6 +14,9 @@ const useStyles = makeStyles({
       paddingRight: "22px",
       paddingBottom: "75px",
     },
+    "&--nolayout": {
+      width: "100%",
+    },
   },
 });
 

@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     left: 0,
     height: "70px",
     width: "100%",
-    zIndex: "9999",
+    zIndex: "1000",
     display: "none",
     "&__info": {
       backgroundColor: "#F51E38",

@@ -1,4 +1,6 @@
+import uiSaga from "./ui.saga";
+import { all, fork } from "redux-saga/effects";
+
 export default function* rootSaga() {
-  console.log("root saga run");
-  yield true;
+  yield all([fork(uiSaga)]);
 }

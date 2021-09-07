@@ -6,7 +6,7 @@ const styles = {
   thumb: {
     height: "0",
     width: "0",
-    "&:focus, &:hover, &$active": {
+    "&:focus, &:hover": {
       boxShadow: "inherit",
     },
   },

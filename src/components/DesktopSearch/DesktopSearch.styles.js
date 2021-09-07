@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     borderBottom: "1px solid rgba(15, 30, 54,0.1)",
     backgroundColor: "#FFF",
     display: "flex",
-    zIndex: "9999",
+    zIndex: "1000",
   },
   search: {
     width: "75%",

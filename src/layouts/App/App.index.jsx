@@ -1,21 +1,24 @@
-import Container from "@material-ui/core/Container";
 import React from "react";
-import useStyles from "./App.styles";
+import { useSelector } from "react-redux";
+import AppPresentaion from "./App.presentation";
 import DesktopNav from "layouts/DesktopNav/DesktopNav.index";
-import { RenderRoutes } from "helpers/routes";
-import clsx from "clsx";
 
 function App() {
-  const classes = useStyles();
+  const selectDisplayLayout = useSelector((state) => state.ui.displayLayout);
+
+  const renderNav = () => {
+    if (selectDisplayLayout) {
+      return <DesktopNav />;
+    } else {
+      return null;
+    }
+  };
+
   return (
-    <Container
-      maxWidth="xl"
-      disableGutters={true}
-      className={classes.container}
-    >
-      <DesktopNav />
-      <div className={clsx(`${classes.page}--desktop`)}>{RenderRoutes()}</div>
-    </Container>
+    <AppPresentaion
+      isDisplayLayout={selectDisplayLayout}
+      renderNav={renderNav}
+    />
   );
 }
 
