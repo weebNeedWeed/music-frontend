@@ -3,6 +3,7 @@ import React from "react";
 import useStyles from "./App.styles";
 import { RenderRoutes } from "helpers/routes";
 import Loading from "layouts/Loading/Loading.index";
+import AppDialog from "components/AppDialog/AppDialog.index";
 
 function AppPresentaion(props) {
   const classes = useStyles();
@@ -22,6 +23,8 @@ function AppPresentaion(props) {
       <div className={layoutClass}>{RenderRoutes()}</div>
 
       <Loading />
+
+      <AppDialog />
     </Container>
   );
 }

@@ -5,6 +5,7 @@ import Login from "pages/Login/Login.index";
 import { Switch, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as uiAction from "redux/actions/ui.action";
+import Register from "pages/Register/Register.index";
 
 export const ROUTES = [
   { path: "/", key: "HOME", exact: true, component: Home, withLayout: true },
@@ -20,6 +21,13 @@ export const ROUTES = [
     key: "LOGIN",
     exact: true,
     component: Login,
+    withLayout: false,
+  },
+  {
+    path: "/register",
+    key: "REGISTER",
+    exact: true,
+    component: Register,
     withLayout: false,
   },
 ];

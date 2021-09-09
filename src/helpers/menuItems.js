@@ -5,6 +5,7 @@ const menuItems = [
   { path: "/", name: "Discover", icon: DashboardIcon },
   { path: "/about", name: "About", icon: InfoIcon },
   { path: "/login", name: "Login", icon: InfoIcon },
+  { path: "/register", name: "Register", icon: InfoIcon },
 ];
 
 export default menuItems;

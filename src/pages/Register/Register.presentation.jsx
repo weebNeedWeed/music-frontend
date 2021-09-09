@@ -1,18 +1,26 @@
 import Container from "@material-ui/core/Container";
 import React from "react";
-import useStyles from "./Login.styles";
+import useStyles from "./Register.styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 
-function LoginPresentation({ handleSubmit, username, password, handleChange }) {
+function RegisterPresentation(props) {
   const classes = useStyles();
+  const {
+    username,
+    password,
+    email,
+    confirmPassword,
+    handleSubmit,
+    handleChange,
+  } = props;
 
   return (
     <Container maxWidth="xl" disableGutters className={classes.container}>
       <Container maxWidth="md" className={classes.wrapper}>
-        <Grid container direction="row-reverse" className={classes.grid}>
+        <Grid container className={classes.grid}>
           <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
             <div className={classes.redirect}>
               <Typography
@@ -20,19 +28,19 @@ function LoginPresentation({ handleSubmit, username, password, handleChange }) {
                 className={`${classes.redirect}__title`}
                 gutterBottom
               >
-                {"Welcome to login"}
+                {"Welcome to Register"}
               </Typography>
               <Typography
                 variant="subtitle1"
                 className={`${classes.redirect}__subtitle`}
               >
-                {"Don't have an account"}
+                {"Have an account ?"}
               </Typography>
               <Link
                 className={clsx(`${classes.redirect}__button`, "button")}
-                to="/register"
+                to="/login"
               >
-                {"Register now!"}
+                {"Login now!"}
               </Link>
               <Link className={`${classes.redirect}__home`} to="/">
                 {"Back to home"}
@@ -42,8 +50,22 @@ function LoginPresentation({ handleSubmit, username, password, handleChange }) {
           <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
             <form className={classes.form} onSubmit={handleSubmit}>
               <Typography className={`${classes.form}__title`}>
-                {"Log In"}
+                {"Register"}
               </Typography>
+
+              <Typography variant="button" className={`${classes.form}__text`}>
+                {"Email"}
+              </Typography>
+              <input
+                type="email"
+                name="email"
+                className={`${classes.form}__input`}
+                placeholder="Email"
+                required
+                value={email}
+                onChange={handleChange}
+              />
+
               <Typography variant="button" className={`${classes.form}__text`}>
                 {"Username"}
               </Typography>
@@ -56,6 +78,7 @@ function LoginPresentation({ handleSubmit, username, password, handleChange }) {
                 value={username}
                 onChange={handleChange}
               />
+
               <Typography variant="button" className={`${classes.form}__text`}>
                 {"Password"}
               </Typography>
@@ -69,8 +92,21 @@ function LoginPresentation({ handleSubmit, username, password, handleChange }) {
                 onChange={handleChange}
               />
 
+              <Typography variant="button" className={`${classes.form}__text`}>
+                {"Confirm password"}
+              </Typography>
+              <input
+                type="password"
+                name="confirmPassword"
+                className={`${classes.form}__input`}
+                placeholder="Confirm password"
+                required
+                value={confirmPassword}
+                onChange={handleChange}
+              />
+
               <button type="submit" className={`${classes.form}__button`}>
-                {"Log In"}
+                {"Register"}
               </button>
             </form>
           </Grid>
@@ -80,4 +116,4 @@ function LoginPresentation({ handleSubmit, username, password, handleChange }) {
   );
 }
 
-export default LoginPresentation;
+export default RegisterPresentation;

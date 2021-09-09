@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     marginTop: "100px",
+    marginBottom: "100px",
     paddingLeft: "5%",
     paddingRight: "5%",
   },
