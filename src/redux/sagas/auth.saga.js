@@ -96,6 +96,10 @@ function* loginStart({ payload }) {
       } else {
         yield put(uiAction.openDialog("Error", data));
       }
+    } else {
+      yield put(
+        uiAction.openDialog("Error", "Unknown Error. Please try again later!"),
+      );
     }
   }
 

@@ -2,9 +2,11 @@ import React from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import Avatar from "@material-ui/core/Avatar";
 import useStyles from "./DesktopSearch.styles";
+import { Link } from "react-router-dom";
 
-function DesktopSearchPresentation({ keyword, handleChange, handleSubmit }) {
+function DesktopSearchPresentation(props) {
   const classes = useStyles();
+  const { keyword, handleChange, handleSubmit, loggedIn, userData } = props;
 
   return (
     <div className={classes.topBar}>
@@ -26,7 +28,15 @@ function DesktopSearchPresentation({ keyword, handleChange, handleSubmit }) {
       <div className={classes.avatar}>
         <Avatar className={`${classes.avatar}__icon`} />
 
-        <span className={`${classes.avatar}__text`}>{"text"}</span>
+        {loggedIn ? (
+          <span
+            className={`${classes.avatar}__text`}
+          >{`Hello ${userData.username}!`}</span>
+        ) : (
+          <Link to="/login" className={`${classes.avatar}__text`}>
+            {"Click to login"}
+          </Link>
+        )}
       </div>
     </div>
   );

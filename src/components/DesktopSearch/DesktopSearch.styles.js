@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     },
   },
   avatar: {
-    width: "15%",
+    width: "25%",
     display: "flex",
     marginTop: "auto",
     marginBottom: "auto",

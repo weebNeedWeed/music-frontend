@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RegisterPresentation from "./Register.presentation";
 import * as authAction from "redux/actions/auth.action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function Register() {
   const [registerData, setRegisterData] = useState({
@@ -11,6 +12,14 @@ function Register() {
     confirmPassword: "",
   });
   const dispatch = useDispatch();
+  const { loggedIn } = useSelector((state) => state.auth);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (loggedIn) {
+      history.push("/");
+    }
+  }, [loggedIn, history]);
 
   const handleChange = (event) => {
     setRegisterData((prevState) => {
