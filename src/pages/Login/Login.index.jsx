@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import LoginPresentation from "./Login.presentation";
+import * as authAction from "redux/actions/auth.action";
+import { useDispatch } from "react-redux";
 
 function Login() {
+  const dispatch = useDispatch();
   const [loginData, setLoginData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -18,7 +21,7 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(loginData);
+    dispatch(authAction.loginStart(loginData));
   };
 
   return (

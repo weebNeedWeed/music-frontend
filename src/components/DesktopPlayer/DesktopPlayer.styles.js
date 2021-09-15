@@ -8,7 +8,6 @@ const useStyles = makeStyles({
     height: "70px",
     width: "100%",
     zIndex: "1000",
-    display: "none",
     "&__info": {
       backgroundColor: "#F51E38",
       width: "16%",
@@ -42,11 +41,13 @@ const useStyles = makeStyles({
       marginBottom: "auto",
       marginLeft: "23px",
       color: "#FFF",
+      cursor: "pointer",
     },
     "&__play": {
       marginBottom: "auto",
       marginTop: "auto",
       marginLeft: "23px",
+      cursor: "pointer",
     },
     "&__duration": {
       color: "white",

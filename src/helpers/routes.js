@@ -6,6 +6,8 @@ import { Switch, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as uiAction from "redux/actions/ui.action";
 import Register from "pages/Register/Register.index";
+import Search from "pages/Search/Search.index";
+import { matchPath } from "react-router";
 
 export const ROUTES = [
   { path: "/", key: "HOME", exact: true, component: Home, withLayout: true },
@@ -30,6 +32,13 @@ export const ROUTES = [
     component: Register,
     withLayout: false,
   },
+  {
+    path: "/search/:keyword",
+    key: "SEARCH",
+    exact: true,
+    component: Search,
+    withLayout: true,
+  },
 ];
 
 export function RenderRoutes() {
@@ -37,7 +46,15 @@ export function RenderRoutes() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const currentRoute = ROUTES.find((elm) => elm.path === location.pathname);
+    const currentRoute = ROUTES.find((elm) => {
+      const match = matchPath(location.pathname, {
+        path: elm.path,
+        exact: true,
+        strict: false,
+      });
+
+      return Boolean(match);
+    });
     dispatch(uiAction.changeLayoutStatus(Boolean(currentRoute?.withLayout)));
   }, [location, dispatch]);
 

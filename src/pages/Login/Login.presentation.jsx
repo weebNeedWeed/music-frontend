@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 
-function LoginPresentation({ handleSubmit, username, password, handleChange }) {
+function LoginPresentation({ handleSubmit, email, password, handleChange }) {
   const classes = useStyles();
 
   return (
@@ -45,15 +45,15 @@ function LoginPresentation({ handleSubmit, username, password, handleChange }) {
                 {"Log In"}
               </Typography>
               <Typography variant="button" className={`${classes.form}__text`}>
-                {"Username"}
+                {"Email"}
               </Typography>
               <input
                 type="text"
-                name="username"
+                name="email"
                 className={`${classes.form}__input`}
-                placeholder="Username"
+                placeholder="Email"
                 required
-                value={username}
+                value={email}
                 onChange={handleChange}
               />
               <Typography variant="button" className={`${classes.form}__text`}>

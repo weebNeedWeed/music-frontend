@@ -34,6 +34,24 @@ class Api {
       password,
     });
   };
+
+  login = (payload) => {
+    const { email, password } = payload;
+    return this.init().post("/auth", {
+      email,
+      password,
+    });
+  };
+
+  checkUser = (payload) => {
+    const { authToken } = payload;
+    return this.init(authToken).get("/users");
+  };
+
+  searchYoutube = (payload) => {
+    const { keyword, limit } = payload;
+    return this.init().get(`/musics/youtube?search=${keyword}&limit=${limit}`);
+  };
 }
 
 export default Api;
