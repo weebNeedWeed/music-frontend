@@ -4,7 +4,7 @@ import * as uiAction from "redux/actions/ui.action";
 
 function* changeLayoutStatus() {
   yield put(uiAction.changeLoadingStatus(true));
-  yield delay(0);
+  yield delay(2000);
   yield put(uiAction.changeLoadingStatus(false));
 }
 
