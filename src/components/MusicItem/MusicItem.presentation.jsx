@@ -9,7 +9,8 @@ import useStyles from "./MusicItem.styles";
 
 function MusicItemPresentation(props) {
   const classes = useStyles();
-  const { imageUrl, name, uploaderName, youtubeUrl, handlePlay } = props;
+  const { imageUrl, name, uploaderName, youtubeUrl, handlePlay, actionList } =
+    props;
 
   return (
     <Card className={classes.root}>
@@ -30,9 +31,16 @@ function MusicItemPresentation(props) {
           <Button size="small" color="secondary" onClick={handlePlay}>
             {"Play"}
           </Button>
-          <Button size="small" color="secondary">
-            {"Add to list"}
-          </Button>
+          {actionList.map((elm, index) => (
+            <Button
+              key={index}
+              onClick={elm.handleClick}
+              size="small"
+              color="secondary"
+            >
+              {elm.title}
+            </Button>
+          ))}
         </CardActions>
       </div>
     </Card>

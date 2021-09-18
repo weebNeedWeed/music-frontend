@@ -6,7 +6,7 @@ function SearchPresentation({ keyword }) {
   return (
     <div>
       <Title gutterBottom>{`${10} results for: ${keyword}`}</Title>
-      <MusicList />
+      <MusicList actionAdd />
     </div>
   );
 }

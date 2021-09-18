@@ -1,7 +1,7 @@
 import * as authType from "redux/types/auth.type";
 
 const initialState = {
-  loggedIn: false,
+  loggedIn: true,
   userData: {
     username: "",
     id: 0,

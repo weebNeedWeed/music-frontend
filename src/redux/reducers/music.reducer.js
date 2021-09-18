@@ -58,6 +58,10 @@ const musicReducer = (state = initialState, action) => {
 
       return stateClone;
 
+    case musicType.MUSIC_GETALLUSERMUSIC_DONE:
+      stateClone.list = action.payload.musicData;
+      return stateClone;
+
     default:
       return { ...state };
   }

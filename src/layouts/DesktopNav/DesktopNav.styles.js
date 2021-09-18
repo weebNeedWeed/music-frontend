@@ -41,6 +41,21 @@ const useStyles = makeStyles((theme) => ({
       color: "#3E2AD1",
     },
   },
+  credit: {
+    position: "fixed",
+    bottom: 0,
+    left: 0,
+    width: "16%",
+    height: "70px",
+    backgroundColor: "#F51E38",
+    display: "flex",
+    justifyContent: "center",
+    paddingTop: "18px",
+    textDecoration: "underline",
+  },
+  cIcon: {
+    color: "white",
+  },
 }));
 
 export default useStyles;

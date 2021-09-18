@@ -9,3 +9,7 @@ export const MUSIC_CHANGELOOPSTATUS = "music/changeLoopStatus";
 export const MUSIC_CHANGESEEKINGSTATUS = "music/changeSeekingStatus";
 export const MUSIC_LOADMUSIC = "music/loadMusic";
 export const MUSIC_UNLOADMUSIC = "music/unloadMusic";
+export const MUSIC_ADDTOLIST = "music/addToList";
+export const MUSIC_DELETEMUSIC = "music/deleteMusic";
+export const MUSIC_GETALLUSERMUSIC_START = "music/getAllUserMusic/start";
+export const MUSIC_GETALLUSERMUSIC_DONE = "music/getAllUserMusic/done";

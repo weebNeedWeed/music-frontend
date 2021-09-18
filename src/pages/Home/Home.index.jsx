@@ -8,13 +8,13 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(musicAction.searchYoutubeStart("trending edm", 30));
+    dispatch(musicAction.searchYoutubeStart("trending songs", 15));
   }, [dispatch]);
 
   return (
     <div>
       <Title gutterBottom>{"Trendings"}</Title>
-      <MusicList />
+      <MusicList actionAdd />
     </div>
   );
 }

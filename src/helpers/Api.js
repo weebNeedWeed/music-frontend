@@ -52,6 +52,26 @@ class Api {
     const { keyword, limit } = payload;
     return this.init().get(`/musics/youtube?search=${keyword}&limit=${limit}`);
   };
+
+  addMusic = (payload) => {
+    const { name, youtubeUrl, imageUrl, uploaderName, authToken } = payload;
+    return this.init(authToken).post("/musics", {
+      Name: name,
+      YoutubeUrl: youtubeUrl,
+      UploaderName: uploaderName,
+      ImageUrl: imageUrl,
+    });
+  };
+
+  deleteMusic = (payload) => {
+    const { musicId, authToken } = payload;
+    return this.init(authToken).delete(`/musics/${musicId}`);
+  };
+
+  getAllUserMusic = (payload) => {
+    const { authToken } = payload;
+    return this.init(authToken).get("/musics");
+  };
 }
 
 export default Api;

@@ -1,13 +1,18 @@
-import React, { useEffect } from "react";
-import About from "pages/About/About.index";
-import Home from "pages/Home/Home.index";
-import Login from "pages/Login/Login.index";
+import React, { useEffect, lazy, Suspense } from "react";
 import { Switch, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as uiAction from "redux/actions/ui.action";
-import Register from "pages/Register/Register.index";
-import Search from "pages/Search/Search.index";
 import { matchPath } from "react-router";
+import Loading from "layouts/Loading/Loading.index";
+
+//Lazy import
+const Home = lazy(() => import("pages/Home/Home.index"));
+const About = lazy(() => import("pages/About/About.index"));
+const Login = lazy(() => import("pages/Login/Login.index"));
+const Register = lazy(() => import("pages/Register/Register.index"));
+const Search = lazy(() => import("pages/Search/Search.index"));
+const Logout = lazy(() => import("pages/Logout/Logout.index"));
+const Playlist = lazy(() => import("pages/Playlist/Playlist.index"));
 
 export const ROUTES = [
   { path: "/", key: "HOME", exact: true, component: Home, withLayout: true },
@@ -39,6 +44,20 @@ export const ROUTES = [
     component: Search,
     withLayout: true,
   },
+  {
+    path: "/logout",
+    key: "LOGOUT",
+    exact: true,
+    component: Logout,
+    withLayout: true,
+  },
+  {
+    path: "/playlist",
+    key: "PLAYLIST",
+    exact: true,
+    component: Playlist,
+    withLayout: true,
+  },
 ];
 
 export function RenderRoutes() {
@@ -62,7 +81,9 @@ export function RenderRoutes() {
     <Switch>
       {ROUTES.map((elm) => (
         <Route key={elm.key} path={elm.path} exact={elm.exact}>
-          <elm.component />
+          <Suspense fallback={<Loading />}>
+            <elm.component />
+          </Suspense>
         </Route>
       ))}
       <Route component={() => "404 error"} />

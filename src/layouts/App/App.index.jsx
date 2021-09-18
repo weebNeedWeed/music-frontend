@@ -9,21 +9,27 @@ import * as uiAction from "redux/actions/ui.action";
 import * as musicAction from "redux/actions/music.action";
 
 function App() {
-  const selectDisplayLayout = useSelector((state) => state.ui.displayLayout);
-  const dispatch = useDispatch();
   const history = useHistory();
-  const selectMusicState = useSelector((state) => state.music);
+  const selectAllState = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const selectMusicState = selectAllState.music;
+  const selectDisplayLayout = selectAllState.ui.displayLayout;
 
   const { player, list } = selectMusicState;
 
   useEffect(() => {
     (async () => {
+      dispatch(authAction.changeLoginStatus(true));
+
       const authToken = localStorage.getItem("authToken");
       const authTimestamp = localStorage.getItem("authTimestamp");
 
       if (!authToken) {
         dispatch(authAction.changeLoginStatus(false));
       } else {
+        dispatch(authAction.changeLoginStatus(true));
+
         if (Date.now() - authTimestamp < 7200000) {
           const api = new Api();
 
@@ -37,8 +43,13 @@ function App() {
                 username: response.data.username,
               }),
             );
+
+            dispatch(authAction.changeLoginStatus(true));
           } catch (error) {
+            dispatch(authAction.changeLoginStatus(false));
+
             localStorage.clear();
+
             dispatch(
               uiAction.openDialog(
                 "Error",
@@ -48,8 +59,6 @@ function App() {
 
             history.push("/login");
           }
-
-          dispatch(authAction.changeLoginStatus(true));
         } else {
           dispatch(authAction.changeLoginStatus(false));
 

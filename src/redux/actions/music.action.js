@@ -96,3 +96,34 @@ export const unloadMusic = () => {
     type: musicType.MUSIC_UNLOADMUSIC,
   };
 };
+
+export const addToList = (musicData) => {
+  return {
+    type: musicType.MUSIC_ADDTOLIST,
+    payload: {
+      musicData,
+    },
+  };
+};
+
+export const deleteMusic = (musicId) => {
+  return {
+    type: musicType.MUSIC_DELETEMUSIC,
+    payload: {
+      musicId,
+    },
+  };
+};
+
+export const getAllUserMusicStart = () => {
+  return {
+    type: musicType.MUSIC_GETALLUSERMUSIC_START,
+  };
+};
+
+export const getAllUserMusicDone = (musicData) => {
+  return {
+    type: musicType.MUSIC_GETALLUSERMUSIC_DONE,
+    payload: { musicData },
+  };
+};
