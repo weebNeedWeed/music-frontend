@@ -1,3 +1,5 @@
-.env file(important):
+## .ENV file 
+
 REACT_APP_API_ENDPOINT (example: http://localhost:80)
-GENERATE_SOURCEMAP=FALSE
+
+GENERATE_SOURCEMAP=false
